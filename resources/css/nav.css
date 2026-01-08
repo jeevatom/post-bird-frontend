@@ -1,0 +1,130 @@
+/* GITHUB NAVBASE */
+.github-nav {
+    background-image: url("/resources/images/bg.jpg");
+    background-size: cover;        /* fills full page */
+    background-repeat: no-repeat;  /* no repeat */
+    background-position: center;   /* centered */
+    background-attachment: fixed;  /* keeps image fixed on scroll (premium look) */
+    padding: 0.6rem 1rem;
+    color: #0d1117;
+}
+
+/* BRAND */
+.github-nav .navbar-brand {
+    color: #fff;
+    padding-right: 20px;
+}
+
+.github-nav .navbar-brand:hover {
+    color: #fff;
+    opacity: 0.8;
+}
+
+/* NAV LINKS */
+.github-nav .nav-link {
+    color: #ffffff;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+}
+
+.github-nav .nav-link:hover {
+    color: #3c71d4;
+    font-weight: bold;
+}
+
+/* SEARCH BOX */
+.github-search {
+    background-color: #6986b1;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+    padding: 5px 12px;
+    border-radius: 6px;
+    width: 220px;
+    transition: 0.2s ease;
+}
+
+.github-search:focus {
+    border-color: #58a6ff;
+    outline: none;
+    width: 300px;
+}
+
+/* PROFILE ICON */
+.profile-icon img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #30363d;
+}
+
+/* TOGGLER */
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* ===== GLASS / BLUR DROPDOWN ===== */
+.glass {
+  max-width: 750px;
+  padding: 25px;
+  border-radius: 18px;
+
+  /* GLASS EFFECT */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+
+  /* BORDER */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  /* SHADOW */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+
+  animation: fadeMenu 0.25s ease;
+}
+
+/* LINKS */
+.mega-link {
+  display: block;
+  padding: 6px 0;
+  color: #fff !important;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: 0.2s ease;
+}
+
+.mega-link:hover {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+/* HEADINGS */
+.mega-menu h6 {
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* ENTRY ANIMATION */
+@keyframes fadeMenu {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SHOW ON HOVER (DESKTOP) */
+@media (min-width: 992px) {
+  .mega-dropdown:hover .mega-menu {
+    display: block;
+  }
+  .mega-dropdown .dropdown-menu {
+    margin-top: 0;
+  }
+}
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=hi, initial-scale=1.0">
+   <title>Post Bird</title>
+   <script src="/resources/js/jquery.js"></script>
+   <script src="/resources/js/bootstrap.bundle.min.js"></script>
+   <script src="/resources/js/Main.js"></script>
+   <script src="/resources/js/select2.min.js"></script>
+   <link href="/resources/css/select2.min.css" rel="stylesheet">
+   <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/resources/css/mainStyle.css" rel="stylesheet">
+   <link href="/resources/css/nav.css" rel="stylesheet">
+   <script>
+      $(function () {
+         $("#modalDiv").load("/components/modal.html");
+         $("#navBar").load("/components/navbar.html", function () {
+
+            if (localStorage.getItem("token")) {
+               $("#alogin").text("Logout");
+               $("#alogin").attr("onclick", "funLogOut(0)");
+            } else {
+               $("#alogin").text("Login");
+               $("#alogin").attr("onclick", "funNavigate(1)");
+            }
+
+         });
+      })
+
+      function funLogOut(arg) {
+         if (arg == 1) {
+            localStorage.removeItem("token");
+            $("#alogin").text("Login");
+            $("#alogin").attr("onclick", "funNavigate(1)");
+         } else {
+              showModal("Post Bird" , "Are You Sure Want to Logout ?" , "text-danger" , 1 , () => funLogOut(1));
+         }
+      }
+
+      function divLoad(divId, page) {
+         const div = $(divId);
+         div.fadeOut(200, () => {
+            div.load(page, () => {
+               div.fadeIn(250);
+            });
+         });
+      }
+
+
+
+      function funNavigate(argPageId) {
+
+         if (argPageId == 1) { //loginPage
+            divLoad("#mainDiv", "/loginPage.html")
+         }
+
+         if (argPageId == 2) { //loginPage
+            divLoad("#mainDiv", "/pages/productMaster.html")
+         }
+
+      }
+
+
+   </script>
+</head>
+
+<body class="bg-section">
+   <div>
+      <div id="navBar"></div>
+
+      <div id="mainDiv" class="p-5">
+
+      </div>
+
+
+   </div>
+   <div id="modalDiv"></div>
+</body>
+
+</html>
