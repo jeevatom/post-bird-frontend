@@ -1,0 +1,107 @@
+ * {
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    /*  body {
+      background: #0d1117;
+      color: #c9d1d9;
+      overflow-x: hidden;
+    }*/
+
+    body {
+      background: linear-gradient(120deg,
+          #0d1117 0%,
+          #0f2a44 50%,
+          #0d1117 100%);
+      color: #c9d1d9;
+    }
+
+
+    /* Animated background */
+    canvas {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: transparent;
+      padding: 1rem 2rem;
+    }
+
+    .navbar-brand {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #58a6ff !important;
+    }
+
+    .nav-link {
+      color: #c9d1d9 !important;
+      margin-left: 1rem;
+    }
+
+    .nav-btn {
+      border: 1px solid #58a6ff;
+      border-radius: 6px;
+      padding: 6px 14px;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: #f0f6fc;
+    }
+
+    .hero span {
+      color: #58a6ff;
+    }
+
+    .subtitle {
+      max-width: 650px;
+      margin: 1.5rem auto;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .btn-primary {
+      background: #238636;
+      border: none;
+    }
+
+    .btn-outline-light {
+      border-color: #30363d;
+    }
+
+    /* Features */
+    .feature-card {
+      background: #161b22;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Scroll animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
