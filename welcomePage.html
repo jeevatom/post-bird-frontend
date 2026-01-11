@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome | OpenMarket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/resources/js/jquery.js"></script>
+  <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/resources/css/welcomePage.css" rel="stylesheet">
+  <script src="/resources/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+  <canvas id="bg"></canvas>
+
+  <!-- Navbar -->
+  <div id="divNav"></div>
+
+  <!-- Hero Section -->
+  <section class="hero container" id="sectioncontent">
+    <div class="row w-100">
+      <div class="col-lg-12">
+        <h1>
+          Build, Sell & Discover<br>
+          <span id="typing"></span>
+        </h1>
+
+        <p class="subtitle">
+          OpenMarket is a free e-commerce platform where anyone can create an account,
+          post products, and connect with buyers — all in one place.
+        </p>
+
+        <div class="mt-4">
+          <a href="#" class="btn btn-primary btn-lg me-2">Get Started</a>
+          <a href="#" class="btn btn-outline-light btn-lg">Explore Products</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="container py-5" id="sectioncards">
+    <div class="row g-4">
+
+      <div class="col-md-4 reveal">
+        <div class="feature-card">
+          <h3>🛒 Sell Anything</h3>
+          <p>Post your products freely and reach real buyers.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <div class="feature-card">
+          <h3>👥 Open for Everyone</h3>
+          <p>Anyone can register, sell, and explore products.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <div class="feature-card">
+          <h3>⚡ Fast & Secure</h3>
+          <p>Built with modern technology for speed and security.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div id="divSignUp">
+
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+
+  <script>
+    $(function () {
+      $("#divNav").load("/components/welcomepagenavbar.html");
+
+    });
+
+    function funLoadSignup(){
+      $("#sectioncontent").hide();
+      $("#sectioncards").hide();
+      $("#divNav").load("signuppage.html");
+    }
+
+    /* Typing Effect */
+    const words = ["Products", "Opportunities", "Your Marketplace"];
+    let i = 0, j = 0, isDeleting = false;
+    const typing = document.getElementById("typing");
+
+    function typeEffect() {
+      let current = words[i];
+      typing.textContent = current.substring(0, j);
+
+      if (!isDeleting && j < current.length) j++;
+      else if (isDeleting && j > 0) j--;
+      else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) i = (i + 1) % words.length;
+      }
+      setTimeout(typeEffect, isDeleting ? 60 : 120);
+    }
+    typeEffect();
+
+    /* Scroll Reveal */
+    const reveals = document.querySelectorAll(".reveal");
+    window.addEventListener("scroll", () => {
+      reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) el.classList.add("active");
+      });
+    });
+
+    /* Background Particles */
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+
+    let particles = Array.from({ length: 80 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      dx: Math.random() - 0.5,
+      dy: Math.random() - 0.5
+    }));
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#58a6ff";
+
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+
+</body>
+
+</html>
