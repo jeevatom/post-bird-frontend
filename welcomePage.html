@@ -9,6 +9,7 @@
   <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
   <link href="/resources/css/welcomePage.css" rel="stylesheet">
   <script src="/resources/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="resources/css/signuppage.css">
 </head>
 
 <body>
@@ -28,7 +29,7 @@
           </h1>
 
           <p class="subtitle">
-            OpenMarket is a free e-commerce platform where anyone can create an account,
+            Post Bird is a free e-commerce platform where anyone can create an account,
             post products, and connect with buyers — all in one place.
           </p>
 
@@ -75,8 +76,6 @@
       <div id="modalDiv"></div>
     </section>
   </main>
-  <!-- Bootstrap JS -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
   <script>
     $(function () {
@@ -150,24 +149,24 @@
     }
 
 
-    /* Typing Effect */
-    const words = ["Products", "Opportunities", "Your Marketplace"];
-    let i = 0, j = 0, isDeleting = false;
-    const typing = document.getElementById("typing");
+    // /* Typing Effect */
+    // const words = ["Products", "Opportunities", "Your Marketplace"];
+    // let i = 0, j = 0, isDeleting = false;
+    // const typing = document.getElementById("typing");
 
-    function typeEffect() {
-      let current = words[i];
-      typing.textContent = current.substring(0, j);
+    // function typeEffect() {
+    //   let current = words[i];
+    //   typing.textContent = current.substring(0, j);
 
-      if (!isDeleting && j < current.length) j++;
-      else if (isDeleting && j > 0) j--;
-      else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) i = (i + 1) % words.length;
-      }
-      setTimeout(typeEffect, isDeleting ? 60 : 120);
-    }
-    typeEffect();
+    //   if (!isDeleting && j < current.length) j++;
+    //   else if (isDeleting && j > 0) j--;
+    //   else {
+    //     isDeleting = !isDeleting;
+    //     if (!isDeleting) i = (i + 1) % words.length;
+    //   }
+    //   setTimeout(typeEffect, isDeleting ? 60 : 120);
+    // }
+    // typeEffect();
 
     /* Scroll Reveal */
     const reveals = document.querySelectorAll(".reveal");

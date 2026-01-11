@@ -1,45 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Sign Up | Post Bird</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="/resources/js/jquery.js"></script>
-  <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
-  <script src="/resources/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="resources/css/signuppage.css">
-</head>
-<body>
-
 <div class="signup-wrapper">
   <div class="signup-card">
 
     <h2 class="text-center mb-3" style="color: #58a6ff !important;">Create your account</h2>
     <p class="text-center mb-4">
-      Join OpenMarket and start selling today
+      Join Post Bird and start selling today
     </p>
 
     <form id="signupForm">
 
       <div class="mb-3">
         <label class="form-label">Full Name</label>
-        <input type="text" class="form-control" id="name" required>
+        <input type="text" class="form-control" id="fullname" required>
+        <span class="text-danger nameError">Enter your Name</span>
       </div>
+
 
       <div class="mb-3">
         <label class="form-label">Phone Number</label>
         <input type="tel" class="form-control" id="phone"
                pattern="[6-9][0-9]{9}" placeholder="10-digit number" required>
+               <span class="text-danger nameError">Enter your Mobile number</span>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Username ( Email )</label>
         <input type="text" class="form-control" id="username" required>
+        <span class="text-danger nameError">Enter your Email</span>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Password</label>
         <input type="password" class="form-control" id="password" minlength="6" required>
+        <span class="text-danger nameError">Enter your Passowrd</span>
+      </div>
+
+         <div class="mb-3">
+        <label class="form-label">Retype Password</label>
+        <input type="password" class="form-control" id="rpassword" minlength="6" required>
+        <span class="text-danger nameError">password mismatch</span>
       </div>
 
       <button type="submit" class="btn btn-success w-100 mt-3">
@@ -60,7 +58,7 @@
     e.preventDefault();
 
     const data = {
-      name: name.value,
+      name: fullname.value,
       phone: phone.value,
       username: username.value,
       password: password.value
@@ -70,6 +68,3 @@
     alert("Signup successful (frontend)");
   });
 </script>
-
-</body>
-</html>
