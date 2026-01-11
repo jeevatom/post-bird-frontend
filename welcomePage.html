@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Welcome | OpenMarket</title>
+  <title>Welcome | Post Bird</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="/resources/js/jquery.js"></script>
   <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -12,82 +12,142 @@
 </head>
 
 <body>
+  <main id="mainContent">
+    <canvas id="bg"></canvas>
 
-  <canvas id="bg"></canvas>
+    <!-- Navbar -->
+    <div id="divNav"></div>
 
-  <!-- Navbar -->
-  <div id="divNav"></div>
+    <!-- Hero Section -->
+    <section class="hero container" id="sectioncontent">
+      <div class="row w-100">
+        <div class="col-lg-12">
+          <h1>
+            Build, Sell & Discover<br>
+            <span id="typing"></span>
+          </h1>
 
-  <!-- Hero Section -->
-  <section class="hero container" id="sectioncontent">
-    <div class="row w-100">
-      <div class="col-lg-12">
-        <h1>
-          Build, Sell & Discover<br>
-          <span id="typing"></span>
-        </h1>
+          <p class="subtitle">
+            OpenMarket is a free e-commerce platform where anyone can create an account,
+            post products, and connect with buyers — all in one place.
+          </p>
 
-        <p class="subtitle">
-          OpenMarket is a free e-commerce platform where anyone can create an account,
-          post products, and connect with buyers — all in one place.
-        </p>
-
-        <div class="mt-4">
-          <a href="#" class="btn btn-primary btn-lg me-2">Get Started</a>
-          <a href="#" class="btn btn-outline-light btn-lg">Explore Products</a>
+          <div class="mt-4">
+            <a href="#" class="btn btn-primary btn-lg me-2">Get Started</a>
+            <a href="#" class="btn btn-outline-light btn-lg">Explore Products</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Features -->
-  <section class="container py-5" id="sectioncards">
-    <div class="row g-4">
+    <!-- Features -->
+    <section class="container py-5" id="sectioncards">
+      <div class="row g-4">
 
-      <div class="col-md-4 reveal">
-        <div class="feature-card">
-          <h3>🛒 Sell Anything</h3>
-          <p>Post your products freely and reach real buyers.</p>
+        <div class="col-md-4 reveal">
+          <div class="feature-card">
+            <h3>🛒 Sell Anything</h3>
+            <p>Post your products freely and reach real buyers.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-4 reveal">
-        <div class="feature-card">
-          <h3>👥 Open for Everyone</h3>
-          <p>Anyone can register, sell, and explore products.</p>
+        <div class="col-md-4 reveal">
+          <div class="feature-card">
+            <h3>👥 Open for Everyone</h3>
+            <p>Anyone can register, sell, and explore products.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-4 reveal">
-        <div class="feature-card">
-          <h3>⚡ Fast & Secure</h3>
-          <p>Built with modern technology for speed and security.</p>
+        <div class="col-md-4 reveal">
+          <div class="feature-card">
+            <h3>⚡ Fast & Secure</h3>
+            <p>Built with modern technology for speed and security.</p>
+          </div>
         </div>
+
       </div>
+    </section>
 
-    </div>
-  </section>
+    <section>
+      <div id="divSignUp">
 
-  <section>
-    <div id="divSignUp">
-
-    </div>
-  </section>
-
+      </div>
+    </section>
+  </main>
   <!-- Bootstrap JS -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
   <script>
     $(function () {
-      $("#divNav").load("/components/welcomepagenavbar.html");
+      // $("#divNav").load("/components/welcomepagenavbar.html");
+
+      $("#divNav").load("/components/welcomepagenavbar.html", function () {
+
+        if (localStorage.getItem("token")) {
+          $("#alogin").text("Logout");
+          $("#alogin").attr("onclick", "funLogOut(0)");
+        } else {
+          $("#alogin").text("Login");
+          $("#alogin").attr("onclick", "funNavigate(1)");
+        }
+
+      });
 
     });
 
-    function funLoadSignup(){
+    function funLoadSignup() {
       $("#sectioncontent").hide();
       $("#sectioncards").hide();
-      $("#divNav").load("signuppage.html");
+
+      $("#divSignUp").load("/components/signuppage.html", function () {
+
+        // hide menu items
+        $("#liExplore").hide();
+        $("#liFeature").hide();
+        $("#aLogin").hide();
+
+        // change login to back
+        $("#aSignIn")
+          .text("Back")
+          .removeAttr("onclick")
+          .attr("onclick", "funBack()");
+      });
     }
+
+
+    function funLoadLoginUp() {
+      $("#sectioncontent").hide();
+      $("#sectioncards").hide();
+      // $("#divSignUp").load("/components/loginPage.html");
+      $("#divSignUp").load("/components/loginPage.html", function () {
+
+        // hide menu items
+        $("#liExplore").hide();
+        $("#liFeature").hide();
+        $("#aSignIn ").hide();
+
+        // change login to back
+        $("#aLogin")
+          .text("Back")
+          .removeAttr("onclick")
+          .attr("onclick", "funBack()");
+      });
+    }
+
+
+
+
+
+    function funLogOut() {
+      localStorage.setItem("token", "");
+      localStorage.setItem("userName", "");
+      localStorage.setItem("roles", "");
+    }
+
+    function funBack() {
+      window.location.reload();
+    }
+
 
     /* Typing Effect */
     const words = ["Products", "Opportunities", "Your Marketplace"];

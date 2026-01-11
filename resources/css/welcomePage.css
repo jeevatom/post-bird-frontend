@@ -105,3 +105,35 @@
       opacity: 1;
       transform: translateY(0);
     }
+  
+  /* 
+        .custom-navbar {
+      .custom-navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    }
+
+    .custom-navbar .navbar-brand {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #58a6ff !important;
+    }
+
+    .custom-navbar .nav-link {
+      color: #c9d1d9 !important;
+      margin-left: 1rem;
+    }
+
+    .custom-navbar .nav-link:hover {
+      color: #58a6ff !important;
+    }
+
+    .custom-navbar .nav-btn {
+      border: 1px solid #58a6ff;
+      border-radius: 6px;
+      padding: 6px 14px;
+    } */
