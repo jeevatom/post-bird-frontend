@@ -72,6 +72,7 @@
       <div id="divSignUp">
 
       </div>
+      <div id="modalDiv"></div>
     </section>
   </main>
   <!-- Bootstrap JS -->
@@ -79,7 +80,7 @@
 
   <script>
     $(function () {
-      // $("#divNav").load("/components/welcomepagenavbar.html");
+      $("#modalDiv").load("/components/modal.html");
 
       $("#divNav").load("/components/welcomepagenavbar.html", function () {
 
@@ -134,15 +135,15 @@
       });
     }
 
-
-
-
-
-    function funLogOut() {
-      localStorage.setItem("token", "");
-      localStorage.setItem("userName", "");
-      localStorage.setItem("roles", "");
-    }
+    function funLogOut(arg) {
+         if (arg == 1) {
+            localStorage.removeItem("token");
+            $("#alogin").text("Login");
+            $("#alogin").attr("onclick", "funNavigate(1)");
+         } else {
+              showModal("Post Bird" , "Are You Sure Want to Logout ?" , "text-danger" , 1 , () => funLogOut(1));
+         }
+      }
 
     function funBack() {
       window.location.reload();
